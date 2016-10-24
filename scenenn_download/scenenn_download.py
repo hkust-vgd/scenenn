@@ -15,7 +15,7 @@ To install PyDrive, execute
     pip install PyDrive
 
 # Usage
-    python scenenn_download.py  [scene ID]
+    python scenenn_download.py  [scene IDs]
 
 At the first time this script is called, your browser window
 will show a page with authentication request to access your 
@@ -68,27 +68,28 @@ if __name__ == "__main__":
     folder = 'scenenn_data'
     mkdir(folder)
     
-    scene = ''
+    scenes = []
     if len(sys.argv) >= 2:
-        scene = sys.argv[1]
+        scenes = sys.argv[1:]
         
-    if scene == '':
+    if scenes == []:
         # Download entire folder
         download_folder(root_id, folder, True)
     else:
-        # Download a specific scene
-        scene_id = ''
-        scene_folder = folder + '/' + scene
-        file_list = drive.ListFile({'q': "'%s' in parents and trashed=false" % root_id}).GetList()
-        for file1 in file_list:
-            if file1['title'] == scene:
-                scene_id = file1['id']
-                break
-        
-        if scene_id == '':
-            print("Scene %s not found. Exiting..." % scene_id)
-            sys.exit(1)
+        for scene in scenes:
+            # Download a specific scene
+            scene_id = ''
+            scene_folder = folder + '/' + scene
+            file_list = drive.ListFile({'q': "'%s' in parents and trashed=false" % root_id}).GetList()
+            for file1 in file_list:
+                if file1['title'] == scene:
+                    scene_id = file1['id']
+                    break
             
-        mkdir(scene_folder)
-        download_folder(scene_id, scene_folder, True)
+            if scene_id == '':
+                print("Scene %s not found." % scene_id)
+                continue
+                
+            mkdir(scene_folder)
+            download_folder(scene_id, scene_folder, True)
         
