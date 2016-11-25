@@ -11,7 +11,12 @@ To download the scenes from this repository, use *scenenn_download*, a Python sc
 ## 2. Beta
 https://drive.google.com/drive/folders/0B2BQi-ql8CzeUkJNbEVEQkozSmc
 
-This includes annotation for scenes that might receives some experimental updates, e.g., object poses and better floor aligned meshes. Such annotation will be merged to the main repository once they are stable. 
+This includes annotation for scenes that might receives some experimental updates: 
+
+* Semantic labels using the 40 classes defined in NYU-D v2.
+* Object poses and better floor aligned meshes. 
+
+Such annotation will be merged to the main repository once they are stable. 
 
 This repository also includes scenes captured by both Asus Xtion PRO and Kinect v2. 
 
