@@ -1,4 +1,6 @@
 from __future__ import print_function
+import gc
+import hashlib
 import sys, os
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
@@ -46,9 +48,30 @@ def download_folder(id, local_folder, recursive=False):
             mkdir(child_folder)
             download_folder(file1['id'], child_folder, recursive)
         else:
+            local_file = os.path.join(local_folder, file1['title'])
+            if os.path.exists(local_file):
+                current_md5 = calc_md5(local_file)
+                expected_md5 = file1['md5Checksum']
+                if current_md5 != expected_md5:
+                    print('MD5SUM: %s != %s' % (current_md5, expected_md5))
+                    print('Removing: %s' % local_file)
+                    os.remove(local_file)
+                else:
+                    print('Skipping: %s' % local_file)
+                    continue
             print('Downloading: %s (%.2f MB) ... ' % (file1['title'], float(file1['fileSize']) / (1024 * 1024)) , end="")
             file1.GetContentFile(local_folder + '/' + file1['title'])
             print('OK')
+            # release memory
+            del file1
+            gc.collect()
+
+def calc_md5(path):
+    md5 = hashlib.md5()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192 * md5.block_size), b''):
+            md5.update(chunk)
+    return md5.hexdigest()
 
 def mkdir(folder):
     if not os.path.exists(folder):
