@@ -11,7 +11,7 @@ https://drive.google.com/drive/folders/0B-aa7y5Ox4eZWE8yMkRkNkU4Tk0
 
 This includes all 90+ scenes captured by Asus Xtion PRO. 
 
-Please use the Python script *scenenn_download* to download a few specific scenes or the entire dataset. To run this script, please install [PyDrive](https://pypi.python.org/pypi/PyDrive). 
+Please use the Python script [scenenn_download](download/scenenn_download.py) to download a few specific scenes or the entire dataset. To run this script, please install [PyDrive](https://pypi.python.org/pypi/PyDrive). 
 
 ### 3D annotation
 Each scene is identified by an ID with three digits, e.g., 076, 123. The data of the scene is structured as follows: 
@@ -58,7 +58,15 @@ For more information, please see [here](http://people.sutd.edu.sg/~saikit/projec
 ![](images/objects.png?raw=true)
 
 # License 
-Our datasets are free for educational and research use. We would love to hear from you if you find them useful. 
+Our datasets are free for educational and research use. We would love to hear from you if you find them useful. If you use the data, please cite
+```
+@inproceedings{scenenn-3dv16,
+    author = {Binh-Son Hua and Quang-Hieu Pham and Duc Thanh Nguyen and Minh-Khoi Tran and Lap-Fai Yu and Sai-Kit Yeung},
+    title = {SceneNN: A Scene Meshes Dataset with aNNotations},
+    booktitle = {International Conference on 3D Vision (3DV)},
+    year = {2016}
+}
+```
 
-If you use the datasets for commercial applications, please kindly contact us beforehand at *scenenn[at]gmail.com*. 
+If you intend to use the data for commercial applications, please kindly contact us beforehand at *scenenn[at]gmail.com*. 
 
