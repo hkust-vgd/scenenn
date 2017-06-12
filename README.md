@@ -24,6 +24,9 @@ SceneNN
 │   ├── trajectory.log          /* camera pose (local to world)     */
 └── oni
     └── 123.oni                 /* the raw RGBD video               */
+└── intrinsic
+    └── asus.ini                /* intrinsic matrix data for Asus Xtion camera  */
+	└── kinect2.ini             /* intrinsic matrix data for Kinect v2 camera   */
 ```
 
 Depending on which application you are working on, you might want to download only the mesh with annotation (~100 - 200MB per scene), or include the raw RGBD (~1 GB per scene). 
@@ -42,6 +45,16 @@ We also provide raw RGB-D files that are output from the Asus Xtion camera. They
 
 In order to extract depth and color images from ONI files, please use the tool in the `playback` folder from this repository. 
 A precompiled binary for Windows is provided. Note that OpenNI 1.5.4 x64 must be installed.  
+
+After extraction, depth map is stored in 16-bit unsigned short format. The depth unit is in millimeter
+
+### Camera pose 
+ 
+The `trajectory.log` contains blocks of 5 lines:
+- The first line in each block indicates the frame index. 
+- The next 4 lines is a 4x4 matrix. This matrix transforms a point from camera space to world space.
+
+Intrinsic matrix is in the format of `[fx, 0, cx; 0, fy, cy; 0 0 1]`, where `fx`, `fy`, `cx`, `cy` could be found in `asus.ini` or `kinect2.ini`, respectively. 
 
 ## 2. Category-level segmentation (beta)
 https://drive.google.com/drive/folders/0B2BQi-ql8CzeUkJNbEVEQkozSmc
