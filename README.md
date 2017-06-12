@@ -29,6 +29,9 @@ SceneNN
 Depending on which application you are working on, you might want to download only the mesh with annotation (~100 - 200MB per scene), or include the raw RGBD (~1 GB per scene). 
 The object tag and axis-aligned bounding box are stored separately in the XML file. If you need object poses, please find them in the `beta` repository, below. 
 
+### Color meshes 
+The color meshes for each scene could be downloaded from our experimental repository here: [https://drive.google.com/drive/folders/0B2BQi-ql8CzeakFnWWpqS3hVWlE]
+
 ### 2D annotation 
 Please download them here: https://drive.google.com/drive/folders/0B2BQi-ql8CzeaDNQQXNmZHdnSFE
 
