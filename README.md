@@ -44,9 +44,16 @@ We encode the label to color channels in RGB format. To decode, please use this 
 We also provide raw RGB-D files that are output from the Asus Xtion camera. They are stored in the `oni` folder in both repositories. (You might need to scroll down to the bottom of the scene list to see it.) 
 
 In order to extract depth and color images from ONI files, please use the tool in the `playback` folder from this repository. 
-A precompiled binary for Windows is provided. Note that OpenNI 1.5.4 x64 must be installed.  
-
 After extraction, depth map is stored in 16-bit unsigned short format. The depth unit is in millimeter
+
+For Windows, a precompiled binary is provided. Note that OpenNI 1.5.4 x64 must be installed.  
+
+For Linux, a MakeFile is included in the `playback` folder. The compilation is tested on Ubuntu 16. 
+(Credit and great thanks to Joao Henriques (joao [at] robots.ox.ac.uk) for this handy script!)
+```
+sudo apt-get install libopenni-dev libfreeimage-dev libglew-dev freeglut3-dev
+make all
+```
 
 ### Camera pose 
  
