@@ -11,6 +11,10 @@
 #include <iostream>
 #include <cstdio>
 
+#ifndef WIN32
+#include <boost/filesystem.hpp>
+#endif 
+
 using namespace std;
 
 #include <FreeImage.h>
@@ -87,6 +91,7 @@ int main(int argc, char* argv[])
   string dir = argv[2];
 
 #ifndef _WIN32
+  boost::filesystem::create_directory(dir);
   boost::filesystem::create_directory(dir + "/depth");
   boost::filesystem::create_directory(dir + "/image");  
 #else
