@@ -29,8 +29,12 @@ SceneNN
 	└── kinect2.ini             /* intrinsic matrix data for Kinect v2 camera   */
 ```
 
-Depending on which application you are working on, you might want to download only the mesh with annotation (~100 - 200MB per scene), or include the raw RGBD (~1 GB per scene). 
-The object tag and axis-aligned bounding box are stored separately in the XML file. If you need object poses, please find them in the `beta` repository, below. 
+- Depending on which application you are working on, you might want to download only the mesh with annotation (~100 - 200MB per scene), or include the raw RGBD (~1 GB per scene). 
+
+- The object tag and axis-aligned bounding box are stored separately in the XML file. If you need object poses, please find them in the `beta` repository, below. 
+
+- The format of the oriented bounding box is: box center (x, y, z), box dimension (along x, y, z), and a quaternion (x, y, z, w) that represents the rotation of the box. 
+Please note that the obbox are computed using eigen decomposition, so it is only accurate when the object is elongated enough. 
 
 ### Color meshes 
 The color meshes for each scene could be downloaded from our experimental repository here: [https://drive.google.com/drive/folders/0B2BQi-ql8CzeakFnWWpqS3hVWlE]
